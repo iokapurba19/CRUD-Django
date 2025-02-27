@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <!-- Tailwind CSS CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-100 flex flex-col items-center justify-center min-h-screen">
+    <div class="bg-white p-8 rounded-lg shadow-md w-full max-w-md">
+        {% if messages %}
+            <div class="mb-4">
+                {% for message in messages %}
+                    <p class="text-red-500">{{ message }}</p>
+                {% endfor %}
+            </div>
+        {% endif %}
+        <form action="{% url 'postuser' %}" method="POST">
+            {% csrf_token %}
+            <h1 class="text-2xl text-center font-bold mb-6">Form Tambah User</h1>
+            <div class="mb-4">
+                <label for="userid" class="block text-sm font-medium text-gray-700">User ID:</label>
+                <input type="text" name="userid" id="userid" required class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm focus:ring focus:ring-blue-500 focus:border-blue-500 p-2">
+            </div>
+            <div class="mb-4">
+                <label for="username" class="block text-sm font-medium text-gray-700">Username:</label>
+                <input type="text" name="username" id="username" required class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm focus:ring focus:ring-blue-500 focus:border-blue-500 p-2">
+            </div>
+            <div class="mb-4">
+                <label for="password" class="block text-sm font-medium text-gray-700">Password:</label>
+                <input type="password" name="password" id="password" required class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm focus:ring focus:ring-blue-500 focus:border-blue-500 p-2">
+            </div>
+            <div class="mb-4">
+                <label for="password2" class="block text-sm font-medium text-gray-700">Masukkan Password Lagi:</label>
+                <input type="password" name="password2" id="password2" required class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm focus:ring focus:ring-blue-500 focus:border-blue-500 p-2">
+            </div>
+            <div class="flex justify-between mt-6">
+                <button type="submit" class="bg-blue-500 text-white font-bold py-2 px-4 rounded hover:bg-blue-600">SUBMIT</button>
+                <a href="{% url 'masteruser' %}" class="text-blue-500 hover:underline">KEMBALI</a>
+            </div>
+        </form>
+    </div>
+</body>
+</html>
