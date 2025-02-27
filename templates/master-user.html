@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <table>
+        <thead>
+            <tr>
+                <th>USER ID</th>
+                <th>USERNAME</th>
+                <th>AKSI</th>
+            </tr>
+        </thead>
+
+        <tbody> 
+            {% for user in data_user %}
+            <tr>
+                <td>{{ user.userid }}</td>
+                <td>{{ user.username }}</td>
+                <td>
+                    <a href="{% url 'updateuser' user.userid %}">UPDATE</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>
