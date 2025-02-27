@@ -1,0 +1,55 @@
+{% extends 'layouts/base.html' %}
+{% load static %}
+
+{% block title %}
+    Hapus Kursus
+{% endblock %}
+
+{% block content %}
+<div class="container-fluid">
+    <!-- Page Header -->
+    <div class="d-md-flex d-block align-items-center justify-content-between my-4 page-header-breadcrumb">
+        <h1 class="page-title fw-semibold fs-18 mb-0">Hapus Kursus</h1>
+        <div class="ms-md-1 ms-0">
+            <nav>
+                <ol class="breadcrumb mb-0">
+                    <li class="breadcrumb-item"><a href="{% url 'dashboard:dashboard' %}">Dashboard</a></li>
+                    <li class="breadcrumb-item"><a href="{% url 'grade:course-list' %}">Grade List</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Hapus</li>
+                </ol>
+            </nav>
+        </div>
+    </div>
+    <!-- Page Header Close -->
+
+    <!-- Row -->
+    <div class="row">
+        <div class="col-xl-12">
+            <div class="card custom-card">
+                <div class="card-header">
+                    <div class="card-title">
+                        Konfirmasi Penghapusan
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="alert alert-warning">
+                        <h5><i class="fas fa-exclamation-triangle me-2"></i>Peringatan!</h5>
+                        <p>Apakah Anda yakin ingin menghapus kursus "{{ object.course_name }}"?</p>
+                        <p>Tindakan ini tidak dapat dibatalkan.</p>
+                    </div>
+                    <form method="post">
+                        {% csrf_token %}
+                        <button type="submit" class="btn btn-danger">
+                            <i class="fas fa-trash me-2"></i>Ya, Hapus
+                        </button>
+                        <a href="{% url 'grade:course-list' %}" class="btn btn-secondary">
+                            <i class="fas fa-times me-2"></i>Batal
+                        </a>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End Row -->
+</div>
+{% endblock %}

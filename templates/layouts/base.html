@@ -1,0 +1,117 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-nav-layout="vertical" data-theme-mode="light" data-header-styles="light" loader="disable" data-menu-styles="dark" data-toggled="close">
+
+<head>
+    <!-- Meta Data -->
+    <meta charset="UTF-8">
+    <meta name='viewport' content='width=device-width, initial-scale=1.0, user-scalable=no'>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title> Dashboard | {% block title %}{% endblock %}</title>
+    <meta name="Description" content="Dots Membantu UMKM">
+    <meta name="Author" content="Dots ®">
+    <meta name="keywords" content="Dots Dashboard">
+    <!-- Favicon -->
+    <link rel="icon" href="{% static 'company/image/DKN.png'%}" type="image/x-icon">
+
+    <!-- Start::styles -->
+    {% include 'layouts/components/dashboard/styles.html' %}
+    {% block styles %}{% endblock %}
+    <!-- End::styles -->
+
+</head>
+
+<body class="">
+
+
+    <!-- Loader -->
+    <div id="loader">
+        <img src="{% static 'assets/images/media/loader.svg'%}" alt="">
+    </div>
+    <!-- Loader -->
+
+    <div class="page">
+
+        <!-- Toast Notification -->
+        <div class="toast-container position-fixed top-0 end-0 p-4">
+            {% if messages %}
+                {% for message in messages %}
+                    <div id="topright-Toast" class="toast colored-toast
+                        {% if message.tags == 'success' %}
+                            bg-success text-white
+                        {% elif message.tags == 'error' or message.tags == 'danger' %}
+                            bg-danger text-white
+                        {% elif message.tags == 'info' %}
+                            bg-info text-white
+                        {% elif message.tags == 'warning' %}
+                            bg-warning text-white
+                        {% else %}
+                            bg-secondary text-white
+                        {% endif %}" role="alert" aria-live="assertive" aria-atomic="true">
+                        <div class="toast-body">
+                            {{ message }}
+                        </div>
+                    </div>
+                {% endfor %}
+            {% endif %}
+        </div>
+
+
+        <!-- Start::main-header -->
+        {% include 'layouts/components/dashboard/main-header.html' %}
+        <!-- End::main-header -->
+
+        <!-- Start::main-sidebar -->
+        {% include 'layouts/components/dashboard/main-sidebar.html' %}
+        <!-- End::main-sidebar -->
+
+        <!-- Start::app-content -->
+        <div class="main-content app-content">
+            {% block content %}{% endblock %}
+        </div>
+        <!-- End::app-content -->
+
+        <!-- Start::main-footer -->
+        {% include 'layouts/components/dashboard/footer.html' %}
+        <!-- End::main-footer -->
+
+        <!-- Start::main-footer -->
+        {% include 'layouts/components/dashboard/modal.html' %}
+        <!-- End::main-footer -->
+
+    </div>
+    <!-- END PAGE-->
+
+    <!-- Start::scripts -->
+    {% include 'layouts/components/dashboard/scripts.html' %}
+    <!-- End::scripts -->
+
+    <!-- Sticky JS -->
+    <script src="{% static 'assets/js/sticky.js'%}"></script>
+
+    <!-- Defaultmenu JS -->
+    <script src="{% static 'assets/js/defaultmenu.min.js'%}"></script>
+
+    <script src="{% static 'assets/helper.js'%}"></script>
+
+    {% block scripts %}{% endblock %}
+
+    <!-- Custom Script to Hide Loader After Page Load -->
+    <script>
+        window.onload = function() {
+            setTimeout(function() {
+                document.getElementById('loader').style.display = 'none';
+            }, 500)
+        };
+        document.addEventListener('DOMContentLoaded', function () {
+            var toastElements = document.querySelectorAll('.toast');
+            toastElements.forEach(function (toastElement) {
+                var toast = new bootstrap.Toast(toastElement);
+                toast.show(); // Show toast when page loads
+            });
+        });
+    </script>
+
+</body>
+
+</html>

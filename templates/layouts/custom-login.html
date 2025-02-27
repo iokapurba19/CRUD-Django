@@ -1,0 +1,73 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-nav-layout="vertical" data-vertical-style="overlay" data-theme-mode="light" data-header-styles="light" data-menu-styles="light" data-toggled="close" loader="disable">
+
+    <head>
+
+        <!-- Meta Data -->
+        <meta charset="UTF-8">
+        <meta name='viewport' content='width=device-width, initial-scale=1.0, user-scalable=no'>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title> Login Dots®</title>
+        <meta name="Description" content="Dots Membantu UMKM">
+        <meta name="Author" content="Dots ®">
+        <meta name="keywords" content="Dots Dashboard">
+
+        <!-- Favicon -->
+        <link rel="icon" href="{% static 'company/image/DKN.png'%}" type="image/x-icon">
+
+        <!-- Start::styles -->
+        {% include 'layouts/components/login/styles.html' %}
+        {% block styles %}{% endblock %}
+        <!-- End::styles -->
+
+	</head>
+
+	{% block body %}{% endblock %}
+
+        <!-- Start::main-switcher -->
+{#        {% include 'components/layouts/custom-switcher.html' %}#}
+        <!-- End::main-switcher -->
+
+        <!-- Loader -->
+        <div id="loader" >
+            <img src="{% static 'assets/images/media/loader.svg'%}" alt="">
+        </div>
+        <!-- Loader -->
+        <div class="toast-container position-fixed top-0 end-0 p-4">
+            {% if messages %}
+                {% for message in messages %}
+                    <div id="topright-Toast" class="toast colored-toast
+                        {% if message.tags == 'success' %}
+                            bg-success text-white
+                        {% elif message.tags == 'error' or message.tags == 'danger' %}
+                            bg-danger text-white
+                        {% elif message.tags == 'info' %}
+                            bg-info text-white
+                        {% elif message.tags == 'warning' %}
+                            bg-warning text-white
+                        {% else %}
+                            bg-secondary text-white
+                        {% endif %}" role="alert" aria-live="assertive" aria-atomic="true">
+                        <div class="toast-body">
+                            {{ message }}
+                        </div>
+                    </div>
+                {% endfor %}
+            {% endif %}
+        </div>
+
+        <!-- Start::main-content -->
+        {% block content %}
+
+        {% endblock %}
+        <!-- End::main-content -->
+
+
+        <!-- Start::scripts -->
+		{% include 'layouts/components/login/custom-scripts.html' %}
+        {% block scripts %}{% endblock %}
+		<!-- End::scripts -->
+
+	</body>
+</html>

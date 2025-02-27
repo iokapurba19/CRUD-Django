@@ -1,0 +1,273 @@
+/* Mengatur font global */
+body {
+font-family: 'Nunito', sans-serif; /* Menggunakan font yang dipilih */
+font-size: 16px; /* Ukuran font default untuk body */
+background-color: #f8f9fa; /* Warna latar belakang yang lembut */
+}
+
+/* Menyempurnakan tampilan card */
+.card {
+border: none; /* Menghilangkan border default */
+border-radius: 15px; /* Sudut yang melengkung pada card */
+box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); /* Bayangan pada card */
+transition: transform 0.3s; /* Animasi saat hover */
+position: relative; /* Memungkinkan posisi untuk ikon */
+padding: 20px; /* Memberikan padding pada card */
+overflow: hidden; /* Menghilangkan elemen yang keluar dari card */
+}
+
+.card:hover {
+transform: translateY(-5px); /* Efek saat hover */
+}
+
+/* Mengatur ikon */
+.card-icon {
+font-size: 40px; /* Ukuran ikon */
+color: #007bff; /* Warna ikon */
+position: absolute;
+top: 20px; /* Jarak dari atas */
+right: 20px; /* Jarak dari kanan */
+transition: color 0.3s; /* Transisi warna ikon saat hover */
+}
+
+/* Mengatur ukuran font untuk judul */
+h5 {
+font-size: 1.25rem; /* Ukuran font untuk h5 */
+}
+
+/* Gaya tombol Ajukan */
+.btn-primary {
+transition: transform 0.3s, background-color 0.3s; /* Animasi saat hover */
+position: relative; /* Memungkinkan posisi untuk efek hover */
+padding: 10px 20px; /* Menambahkan padding untuk tombol */
+}
+
+.btn-primary:hover {
+transform: translateX(5px); /* Menggeser tombol ke kanan saat hover */
+background-color: #0056b3; /* Ganti warna latar belakang tombol */
+color: white; /* Pastikan warna teks tetap putih */
+}
+
+.btn-primary:after {
+transition: transform 0.3s; /* Animasi saat hover */
+}
+
+.btn-primary:hover:after {
+transform: translateX(5px); /* Menggeser panah saat hover */
+}
+
+.card-text {
+font-size: 0.9rem; /* Ukuran font untuk deskripsi di dalam card */
+margin-bottom: 1.5rem; /* Margin bawah untuk memberi jarak */
+padding-right: 50px; /* Memberikan ruang untuk ikon di kanan */
+}
+
+/* Gaya tombol Ajukan */
+.btn-primary {
+transition: transform 0.3s, background-color 0.3s; /* Animasi saat hover */
+}
+
+.btn-primary:hover {
+transform: translateX(5px); /* Menggeser tombol ke kanan saat hover */
+background-color: #0056b3; /* Ganti warna latar belakang tombol */
+}
+
+.input-group img {
+    border-radius: 4px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.12);
+    transition: all 0.3s ease;
+}
+
+.input-group .position-relative {
+    display: inline-block;
+}
+
+.form-control {
+    min-height: 40px;
+}
+
+.img-preview:hover {
+    opacity: 0.8;
+    transform: scale(1.02);
+}
+
+#modalImage {
+    max-height: 80vh;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.modal-lg {
+    max-width: 90%;
+}
+
+.nav-pills .nav-link {
+    border-radius: 4px;
+    margin-right: 5px;
+}
+
+.nav-pills .nav-link.active {
+    background-color: #007bff;
+    color: white;
+}
+
+@media (max-width: 768px) {
+    .modal-lg {
+        max-width: 95%;
+    }
+
+    .nav-pills {
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        padding-bottom: 5px;
+    }
+
+    .nav-pills::-webkit-scrollbar {
+        height: 4px;
+    }
+
+    .nav-pills::-webkit-scrollbar-thumb {
+        background: #007bff;
+        border-radius: 2px;
+    }
+}
+
+.notification-container {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 9999;
+    max-width: 400px;
+    min-width: 300px;
+  }
+
+  .notification-container .alert {
+    margin-bottom: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    animation: slideInRight 0.5s ease-in-out;
+  }
+
+  @keyframes slideInRight {
+    from {
+      transform: translateX(100%);
+      opacity: 0;
+    }
+    to {
+      transform: translateX(0);
+      opacity: 1;
+    }
+  }
+
+  .notification-container .alert.fade-out {
+    animation: fadeOut 0.5s ease-in-out;
+  }
+
+  @keyframes fadeOut {
+    from {
+      transform: translateX(0);
+      opacity: 1;
+    }
+    to {
+      transform: translateX(100%);
+      opacity: 0;
+    }
+  }
+  .signature-container {
+    width: 100%;
+    max-width: 400px;
+    height: 200px;
+    margin: 10px 0;
+    border: 2px solid #ccc; /* Border yang terlihat */
+    border-radius: 15px; /* Rounded corners */
+    overflow: hidden;
+    background-color: #f5f5f5; /* Warna background yang terlihat */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+
+  .signature-canvas {
+    border-radius: 15px; /* Rounded corners pada canvas */
+    width: 100%;
+    height: 100%;
+    cursor: crosshair;
+  }
+
+  @media (max-width: 576px) {
+    .progress-step .rounded-circle {
+      width: 30px;
+      height: 30px;
+      font-size: 14px;
+    }
+  }
+
+  .progress-wrapper {
+    position: relative;
+  }
+
+  .progress-container {
+    overflow-x: auto;
+    display: flex;
+    position: relative;
+    padding: 0 1rem;
+    -webkit-overflow-scrolling: touch; /* Smooth scrolling for mobile */
+    scrollbar-width: none; /* Hide scrollbar on Firefox */
+  }
+
+  .progress-container::-webkit-scrollbar {
+    display: none; /* Hide scrollbar on Chrome, Safari, Edge */
+  }
+
+  .progress-container::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 100%;
+    width: 30px;
+    pointer-events: none;
+    background: linear-gradient(to left, rgba(255, 255, 255, 1), rgba(255, 255, 255, 0));
+  }
+
+  .progress-step {
+    position: relative;
+    text-align: center;
+    flex: 1 1 auto;
+    min-width: 80px;
+  }
+
+  .progress-step .rounded-circle {
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+    font-size: 18px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f8f9fa;
+    border: 1px solid #ced4da;
+  }
+
+  .progress-step .rounded-circle.bg-primary {
+    background-color: #0d6efd;
+    color: white;
+  }
+
+  .progress-step span {
+    font-size: 14px;
+    display: block;
+    margin-top: 5px;
+  }
+
+  @media (max-width: 576px) {
+    .progress-step .rounded-circle {
+      width: 30px;
+      height: 30px;
+      font-size: 14px;
+    }
+    .progress-step span {
+      font-size: 12px;
+    }
+  }

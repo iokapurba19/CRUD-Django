@@ -1,0 +1,90 @@
+{% extends 'layouts/base.html' %}
+{% load static %}
+
+{% block title %}
+    Detail Buku
+{% endblock %}
+
+{% block content %}
+<div class="container-fluid">
+    <!-- Page Header -->
+    <div class="d-md-flex d-block align-items-center justify-content-between my-4 page-header-breadcrumb">
+        <h1 class="page-title fw-semibold fs-18 mb-0">Detail Buku</h1>
+        <div class="ms-md-1 ms-0">
+            <nav>
+                <ol class="breadcrumb mb-0">
+                    <li class="breadcrumb-item"><a href="{% url 'dashboard:dashboard' %}">Dashboard</a></li>
+                    <li class="breadcrumb-item"><a href="{% url 'buku:buku-list' %}">Buku</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Detail</li>
+                </ol>
+            </nav>
+        </div>
+    </div>
+    <!-- Page Header Close -->
+
+    <!-- Row -->
+    <div class="row">
+        <div class="col-xl-12">
+            <div class="card custom-card">
+                <div class="card-header">
+                    <div class="card-title">
+                        Informasi Buku
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <table class="table">
+                                <tr>
+                                    <th width="30%">Judul</th>
+                                    <td>{{ object.judul }}</td>
+                                </tr>
+                                <tr>
+                                    <th>Penulis</th>
+                                    <td>{{ object.penulis }}</td>
+                                </tr>
+                                <tr>
+                                    <th>Penerbit</th>
+                                    <td>{{ object.penerbit }}</td>
+                                </tr>
+                                <tr>
+                                    <th>Tahun Terbit</th>
+                                    <td>{{ object.tahun_terbit }}</td>
+                                </tr>
+                                <tr>
+                                    <th>Harga</th>
+                                    <td>Rp {{ object.harga }}</td>
+                                </tr>
+                                <tr>
+                                    <th>Stok</th>
+                                    <td>{{ object.stok }}</td>
+                                </tr>
+                                <tr>
+                                    <th>Dibuat pada</th>
+                                    <td>{{ object.created_at }}</td>
+                                </tr>
+                                <tr>
+                                    <th>Diperbarui pada</th>
+                                    <td>{{ object.updated_at }}</td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="mt-3">
+                        <a href="{% url 'buku:buku-list' %}" class="btn btn-secondary">
+                            <i class="fas fa-arrow-left me-2"></i>Kembali
+                        </a>
+                        <a href="{% url 'buku:buku-update' object.pk %}" class="btn btn-warning">
+                            <i class="fas fa-edit me-2"></i>Edit
+                        </a>
+                        <a href="{% url 'buku:buku-delete' object.pk %}" class="btn btn-danger">
+                            <i class="fas fa-trash me-2"></i>Hapus
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End Row -->
+</div>
+{% endblock %} 

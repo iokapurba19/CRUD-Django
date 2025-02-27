@@ -1,0 +1,23 @@
+{% load static %}
+
+<!-- Modal Konfirmasi Penghapusan -->
+<div class="modal fade" id="deleteModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <form method="post" id="deleteForm">
+                {% csrf_token %}
+                <div class="modal-header">
+                    <h6 class="modal-title" id="deleteModalLabel">Konfirmasi Penghapusan</h6>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Tutup"></button>
+                </div>
+                <div class="modal-body">
+                    <p>Apakah Anda yakin ingin menghapus <strong id="entityName"></strong>?</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
+                    <button type="submit" class="btn btn-danger">Hapus</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
