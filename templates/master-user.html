@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- Tailwind CSS CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-100 flex flex-col items-center p-6">
+    <div class="bg-white p-6 rounded-lg shadow-md w-full max-w-3xl">
+        {% if messages %}
+            <div class="mb-4">
+                {% for message in messages %}
+                    <p class="text-red-500">{{ message }}</p>
+                {% endfor %}
+            </div>
+        {% endif %}
+        <h1 class="text-2xl text-center font-bold mb-4">DAFTAR USER</h1>
+        <a href="{% url 'tambahuser' %}" class="text-blue-500 hover:underline mb-4 inline-block">TAMBAH USER</a>
+        <table class="min-w-full bg-white border border-gray-300">
+            <thead>
+                <tr class="bg-gray-200">
+                    <th class="py-2 px-4 border-b">USER ID</th>
+                    <th class="py-2 px-4 border-b">USERNAME</th>
+                    <th class="py-2 px-4 border-b">ACTION</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for user in data_user %}
+                    <tr class="hover:bg-gray-100">
+                        <td class="py-2 px-4 border-b">{{ user.userid }}</td>
+                        <td class="py-2 px-4 border-b">{{ user.username }}</td>
+                        <td class="py-2 px-4 border-b">
+                            <a href="{% url 'updateuser' user.userid %}" class="text-blue-500 hover:underline">UPDATE</a>
+                            <a onclick="return confirm('Anda yakin ingin menghapus user dengan userid = {{ user.userid }}')" href="{% url 'deleteuser' user.userid %}" class="text-red-500 hover:underline ml-2">DELETE</a>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>
