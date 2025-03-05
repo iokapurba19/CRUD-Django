@@ -1,0 +1,29 @@
+{% extends 'base/base.html' %}
+
+{% block title %}Image List{% endblock %}
+
+{% block content %}
+<h1>Image List</h1>
+<a href="{% url 'image_create' %}" class="btn btn-primary mb-3">Add New Image</a>
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Title</th>
+            <th>Image</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for image in images %}
+            <tr>
+                <td>{{ image.title }}</td>
+                <td><img src="{{ image.image_file.url }}" alt="{{ image.title }}" width="100"></td>
+                <td>
+                    <a href="{% url 'image_update' image.pk %}" class="btn btn-warning btn-sm">Edit</a>
+                    <a href="{% url 'image_delete' image.pk %}" class="btn btn-danger btn-sm">Delete</a>
+                </td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

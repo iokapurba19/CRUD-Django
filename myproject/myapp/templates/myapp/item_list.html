@@ -1,0 +1,29 @@
+{% extends 'base/base.html' %}
+
+{% block title %}Item List{% endblock %}
+
+{% block content %}
+<h1>Item List</h1>
+<a href="{% url 'item_create' %}" class="btn btn-primary mb-3">Add New Item</a>
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for item in items %}
+            <tr>
+                <td>{{ item.name }}</td>
+                <td>{{ item.description }}</td>
+                <td>
+                    <a href="{% url 'item_update' item.pk %}" class="btn btn-warning btn-sm">Edit</a>
+                    <a href="{% url 'item_delete' item.pk %}" class="btn btn-danger btn-sm">Delete</a>
+                </td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}
